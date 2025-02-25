@@ -1,0 +1,36 @@
+import java.util.*;
+/*
+class Node {
+    public int val;
+    public List<Node> children;
+
+    public Node() {}
+
+    public Node(int _val) {
+        val = _val;
+        children = new ArrayList<>(); // Initialize empty list
+    }
+
+    public Node(int _val, List<Node> _children) {
+        val = _val;
+        children = _children;
+    }
+}
+*/
+class Solution {
+    public List<Integer> preorder(Node root) {
+        List<Integer> list = new ArrayList<>();
+        preorder_display(root, list);
+        return list; // Return the result
+    }
+
+    public void preorder_display(Node tptr, List<Integer> list) {
+        if (tptr == null) return; // Base condition to stop recursion
+
+        list.add(tptr.val); // Add current node value to list
+
+        for (int ind = 0; ind < tptr.children.size(); ind++) {
+            preorder_display(tptr.children.get(ind), list); // Recursive call
+        }
+    }
+}
