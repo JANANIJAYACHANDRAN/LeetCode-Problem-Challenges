@@ -1,0 +1,31 @@
+class Solution {
+    public String largestNumber(int[] nums) {
+        int size= nums.length;
+        String [] str =  new String[size];
+        for(int ind= 0; ind<size;ind++){
+            str[ind]= String.valueOf(nums[ind]);
+        }
+        int itr,traverse;
+        for(itr=0; itr<size-1;itr++)
+        {
+            for(traverse=itr+1;traverse< size;traverse++)
+            {
+                String comp1= str[itr]+str[traverse];
+                String comp2= str[traverse]+ str[ itr];
+               if( comp1.compareTo(comp2)<0)
+               {
+                String temp= str[itr];
+                str[itr]= str[traverse];
+                str[traverse]= temp;
+               }
+            }
+        }
+        String result="";
+        for(int ind=0; ind<size;ind++)
+        result= result+str[ind];
+        if(result.charAt(0)=='0') return "0";
+        return result;
+
+        
+    }
+}
