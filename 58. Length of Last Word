@@ -1,0 +1,8 @@
+class Solution {
+    public int lengthOfLastWord(String s) {
+        s=s.trim(); // removes leading and trailing spaces
+        int lastSpace = s.lastIndexOf(" "); // finds the position of last occuring space it's based on zero base indexing 
+        return s.length()-lastSpace-1;
+        
+    }
+}
