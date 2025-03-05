@@ -1,0 +1,18 @@
+class Solution {
+    public boolean isThree(int n) {
+        int count =1;//since all integer has 1 as its divisor
+        for(int itr=2;itr<n+1;itr++){//2
+            if(n%itr==0){
+                count++;
+            }
+        }
+        if(count==3){
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+        
+    }
+}
