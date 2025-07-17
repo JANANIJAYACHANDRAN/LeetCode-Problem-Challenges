@@ -1,14 +1,16 @@
 class Solution {
     public int firstMissingPositive(int[] nums) {
-        int missingNumber =1;
+        int missingNumber =1; //assuming the missing number to 1 
+        //Sort them inorder to find the element that's missing 
         Arrays.sort(nums);
-        for(int number: nums)
+        for(int number: nums) // loop through each element in the array 
         {
             if(number>0)
             {
-                if(number==missingNumber)
+                if(number==missingNumber) // If the current number in the array equals the missingNumber, then we found this number — so we increment missingNumber by 1, and keep looking for the next missing number 
                 missingNumber++;
                 else if(number>missingNumber)
+                /* If the current number is greater than missingNumber, that means missingNumber is not in the array.Since the array is sorted, and we already passed where missingNumber should be, we can break the loop early.*/
                 break;
             }
         }
