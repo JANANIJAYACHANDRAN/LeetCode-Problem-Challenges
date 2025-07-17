@@ -1,0 +1,33 @@
+class Solution {
+    public int evalRPN(String[] tokens){
+    //here we are accepting the array of strings  
+    Stack <Integer> st= new Stack<>(); // We are creating a stack (named "st") that holds integer values only 
+ for(String token:tokens) //we are looping through each element in the array tokens
+ {
+    if(token.equals("+")|| token.equals("-")||token.equals("*")|| token.equals("/"))
+    {
+    // we will pop the element only if it's any of the arithmetic operators.
+    
+        int b= st.pop();
+        /* it will hold the second operand in order to avoid the conflict of negative integers being computed as the output   for an instance say suppose we are getting a modified input array of case 1  ["2","1","-"] when we put them into stack and pop them out. The 1 is popped first because of the stack rule "LIFO". So when we are evaluating the evaluation will be 1-2 =-1 which is a contradiction to the actual result being 2-1=1. */        
+        int a= st.pop();// it will hold the first operand.
+        int result =0;
+        switch(token){
+            case "+": result= a+b; break;
+            case "-": result= a-b; break;
+            case "*": result=a*b; break;
+            case "/": result=a/b; break;
+        }
+        st.push(result);
+    }
+        else {
+            // insert the element on coverting it to an Integer
+            st.push(Integer.parseInt(token));
+        }
+
+     
+ }
+ return st.peek();
+        
+    }
+}
