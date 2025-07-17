@@ -1,0 +1,41 @@
+class Solution {
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        int m= nums1.length; // length of array 1 
+        int n= nums2.length ;// length of array 2 
+        /*The length of the  2 arrays is calculated in order 
+        to create an array 3 is created that contains the elements of 
+        both nums1 and nums2*/
+        int[] merged = new int[m+n]; //size of new array is the size of array 1&2 
+        int i=0, j=0,k=0; 
+        //The elements in the merged array is arranged in the ascending order 
+        while(i<m && j<n)
+        {
+            if(nums1[i]<nums2[j]) // conditions to check the order(i.e. Elements is arranged in the ascending....check if element in array1 is less than element in array2)
+            {
+                merged[k++]= nums1[i++]; // element of array 1 is added on the above if condition
+            }
+            else 
+            {
+                merged[k++]= nums2[j++];  // element of array 2 is added on the failure  above if condition
+            }
+        }
+// now adding all the other remaining elements 
+while(i<m)
+{
+    merged[k++]= nums1[i++];
+}
+while(j<n)
+{
+    merged[k++]= nums2[j++];
+}
+int total= m+n;
+if(total%2==1) // checks if the number of elements in new arry is odd 
+{
+    return merged[total/2];
+}
+else {
+    return (merged[total/2-1] + merged[total/2]) /2.0 ;
+}
+
+ }
+}
