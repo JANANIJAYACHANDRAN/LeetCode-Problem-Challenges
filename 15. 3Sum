@@ -1,0 +1,33 @@
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+      List<List<Integer>> result = new ArrayList<>(); 
+      if(nums==null ||nums.length==0) // checking if the array is empty or null, if so return the empty list 
+      return result;
+      Map<Integer, Integer> map = new HashMap<>(); 
+      Arrays.sort(nums); // this sorting is done inorder to avoid the duplicate 
+      for(int i=0;i<nums.length;i++)
+      {
+        map.put(nums[i], i); // this will hold the value and their index , to avoid the duplicate.
+      }
+      Set <String> used = new HashSet<>();//this will hold it as String 
+      for(int i=0;i<nums.length;i++)
+      {
+        for(int j=i+1;j<nums.length;j++)
+        {
+            int currSum = nums[i]+ nums[j];
+            if(map.containsKey(-1*currSum)) //this will checkk if the negation of the sum is directly available in the list 
+            {
+                int k= map.get(-1*currSum) ;// this will get value for k
+                if(!used.contains(nums[i]+ ":"+ nums[j]+":"+ nums[k]) && k>i && k>j)
+                {
+                // this will check the conditions that is provided, if true then it's added to the hashmap.
+                result.add(Arrays.asList(nums[i],nums[j],nums[k])); // this will add the elements into the list.
+                used.add(nums[i]+":"+ nums[j] +":"+ nums[k]);
+            }
+        }
+      }
+        
+    }
+    return result;
+}
+}
