@@ -1,0 +1,29 @@
+class Solution {
+    void convert(char[][] a, int i, int j) {
+        if (i < 0 || j < 0 || i >= a.length || j >= a[0].length || a[i][j] == '0') {
+            return;
+        }
+
+        // Mark current cell as visited
+        a[i][j] = '0';
+
+        // Recursively check all four directions
+        convert(a, i, j - 1); // left
+        convert(a, i, j + 1); // right
+        convert(a, i - 1, j); // up
+        convert(a, i + 1, j); // down
+    }
+
+    public int numIslands(char[][] a) {
+        int c = 0;
+        for (int i = 0; i < a.length; i++) {
+            for (int j = 0; j < a[0].length; j++) {
+                if (a[i][j] == '1') {
+                    c++;
+                    convert(a, i, j);
+                }
+            }
+        }
+        return c;
+    }
+}
