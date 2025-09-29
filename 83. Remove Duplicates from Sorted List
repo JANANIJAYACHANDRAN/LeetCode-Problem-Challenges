@@ -1,0 +1,28 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode deleteDuplicates(ListNode head) {
+        ListNode curr =head; // this holds the head value
+
+        while(curr!=null && curr.next!=null)
+         /* the loop executes until curr is not equal to null and curr's next is not equal  */
+        {
+            if(curr.val ==curr.next.val) // Here goes the major logic  the curr's value and curr's next's value is compared...
+            {
+                curr.next= curr.next.next; // if the condition was satisfied the curr's next is assigned the curr's next's next.... We are just changing the link to curr's next's next's 
+            }else 
+            {
+                curr=curr.next; // else the curr pointer moves ahead
+            }
+        }
+        return head; // and the head is finally returned removing all the duplicates
+    }
+}
