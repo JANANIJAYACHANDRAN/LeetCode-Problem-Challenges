@@ -1,0 +1,16 @@
+class Solution {
+    public int maxProfit(int[] prices) {
+         int buy = prices[0]; // intialize buy to the first value of the array
+        int profit = 0;       // setting the profit to 0
+        for (int i = 1; i < prices.length; i++) { // loops through each element in the array from index 1 to end 
+            if (prices[i] < buy) { // if condition is used to check if the buy value isgreater than the price[i]  
+                buy = prices[i]; //initialize it to the minimal value in the prices array 
+            } else if (prices[i] - buy > profit) { // If selling at the current day's price gives a better profit than any profit we’ve seen so far, update the maximum profit
+                profit = prices[i] - buy;    // Update profit to the new higher value
+            }
+        }
+        return profit; // return the profit
+        
+        
+    }
+}
