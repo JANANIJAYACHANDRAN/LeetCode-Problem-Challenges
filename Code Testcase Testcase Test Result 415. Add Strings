@@ -1,0 +1,29 @@
+class Solution {
+    public String addStrings(String num1, String num2) {
+        int i=num1.length()-1; // pointer to the last character of the string "11"(i.e i='1')
+        int j=num2.length()-1;//pointer to the last character of the string "123"(i.e j='3')
+        int carry= 0; //carry from the previous digit addition
+        StringBuilder sb= new StringBuilder(); // this will hold the result 
+        // we append it in reverse order 
+        while(i>=0||j>=0||carry!=0) //loops until all the carry is processed
+        {
+            int sum=carry; //starts sum with carry from previous iteration
+            if(i>=0) //if num1 still has digits,add current digit to sum
+            {
+                sum+=num1.charAt(i)-'0'; // convert char to int
+                i--; //moves to next digit
+            }
+            if(j>=0)//if num2 still has digits,add current digit to sum
+            {
+                sum+=num2.charAt(j)-'0';//conversion
+                j--;// pointer movement 
+            }
+            sb.append(sum% 10);// append current digit to the sb(i.e result)
+            
+            carry=sum/10; //update the carry for next iteration
+
+        }
+        //reverse the result since digits were  added from RHS to LHS
+        return sb.reverse().toString();
+    }
+}
